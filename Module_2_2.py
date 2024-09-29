@@ -2,6 +2,7 @@ print("Сравниваем целые числа")
 first = input('Введите первое число: ')
 second = input('Введите второе число: ')
 third = input('Введите третье число: ')
+print("Спасибо!")
 if first == second and first == third:
     print("Вы ввели три одинаковых числа")
 elif first == second or first == third or second == third:
