@@ -9,7 +9,6 @@ def string_info():
     string = str(input("Введите любую строку: "))
     new_string = (len(string), string.upper(), string.lower())
     print(new_string)
-    # return new_string
 
 def is_contains():
     count_calls()
@@ -36,4 +35,4 @@ def cont():
 string_info()
 is_contains()
 cont()
-print(calls)
+print("Функции вызывались", calls, "раз")
