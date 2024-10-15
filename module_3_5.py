@@ -1,4 +1,4 @@
-number = int(input("Введите число: "))
+number = int(input("Введите любое целое число: "))
 def get_multiplied_digits(number):
     str_number = str(number)
     first = int(str_number[0])
