@@ -2,7 +2,6 @@ n = int(input("Число в первом поле: "))
 pole_2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 m = int(n/2 +1)
 result = []
-parol = ()
 parol_1 = ()
 parol_2 = ()
 for i in range(len(pole_2[0:m])):
