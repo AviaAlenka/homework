@@ -11,7 +11,7 @@ class House:
             for i in range(new_floor):
                 print(i+1)
         if new_floor <= 2:
-            print("Можно и пешком!")
+            print("Можно и пешком!") # Мелкое хулиганство :-)
 
 h1 = House('ЖК Горский', 18)
 h2 = House('Домик в деревне', 2)
