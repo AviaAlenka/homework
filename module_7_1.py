@@ -11,10 +11,6 @@ class Product:
         return f"{str(self.name)}, {float(self.weight)}, {str(self.category)}"
 
 class Shop:
-
-    # def __init__(self, products=None):
-    #     self.products = products
-
     __file_name = 'products.txt'
 
     def get_products(self):
