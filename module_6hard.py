@@ -78,7 +78,6 @@ class Circle(Figure):
         __radius = self.new_sides[0] / (2 * math.pi) # Вне метода не удалось записать
         print(f"Радиус круга: {__radius}")
         print(f"Площадь круга: {square}")
-
         return square
 
 class Triangle(Figure):
