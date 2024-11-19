@@ -8,9 +8,14 @@ class Figure:
         self.__sides = sides
         self.__color = color
 
+    # def __is_valid_color(self, r, g, b): # Почему-то не срабатывает...
+    #     if r in range(0, 256) and g in range(0, 256) and b in range(0, 256):
+    #         return True
+
     def set_color(self, r, g, b):
         print(f"Получены новые цвета в {self.__class__.__name__}: {r}, {g}, {b}")
         if r in range(0, 256) and g in range(0, 256) and b in range(0, 256):
+        # if self.__is_valid_color is True: # Не срабатывает, перебрасывает на Else...
             print(f"Новые цвета {self.__class__.__name__}: {r}, {g}, {b}")
             self.__color = (r, g, b)
         else:
@@ -19,33 +24,15 @@ class Figure:
         return self.__color
 
     def get_color(self):
-        # __color = []
         print(f"Цвета {self.__class__.__name__}: {self.__color}")
         return self.__color
 
     def __is_valid_sides(self):
+        # После неудачного опыта с __is_valid_color не понимаю, как выполнить
         pass
 
-
-    def set_sides(self, *new_sides):
-        self.__sides = list(new_sides)
-        print(f"Получены новые стороны в {self.__class__.__name__}:{self.__sides}")
-        if len(self.__sides) == 1:
-            a = self.__sides[0]
-            list_of_a = [a] * self.sides_count
-            print(f"Новые стороны в {self.__class__.__name__}: {list_of_a}")
-            self.__sides = list_of_a
-            # return self.__sides
-        else:
-            # a = 1
-            # list_of_a = [a] * self.sides_count
-            # print(f"Новые стороны в {self.__class__.__name__}:{list_of_a}")
-            # self.__sides = list_of_a
-            print(f"Cтороны в {self.__class__.__name__} остались старыми:{self.__sides}")
-            # self.__sides = list_of_a
-
     def get_sides(self):
-        print(f"Исходные стороны {self.__class__.__name__}: {list(self.__sides)}")
+        print(f"Исходные стороны в {self.__class__.__name__}: {list(self.__sides)}")
         if len(self.__sides) == 1:
             a = self.__sides[0]
             list_of_a = [a] * self.sides_count
@@ -58,26 +45,52 @@ class Figure:
             self.__sides = list_of_a
         return self.__sides
 
+    def set_sides(self, *new_sides):
+        self.new_sides = list(new_sides)
+        print(f"Получены новые стороны в {self.__class__.__name__}:{self.new_sides}")
+
+        if len(self.new_sides) == 1:
+            a = self.new_sides[0]
+            list_of_a = [a] * self.sides_count
+            print(f"Новые стороны в {self.__class__.__name__}: {list_of_a}")
+            self.new_sides = list_of_a
+            return self.new_sides
+        elif len(self.new_sides) != self.sides_count:
+            print(f"Неверные стороны {self.__class__.__name__}")
+            self.new_sides = self.__sides
+            return self.new_sides
+
     def __len__(self):
         # len = self.__sides * self.sides_count
-        print(f"Периметр фигуры {self.__class__.__name__}: {sum(self.__sides)}")
-        return sum(self.__sides)
+        print(f"Периметр фигуры {self.__class__.__name__}: {sum(self.new_sides)}")
+        return sum(self.new_sides)
 
 class Circle(Figure):
     sides_count = 1
+
     def __init__(self, txt, color, *sides):
         super().__init__(txt, color, sides)
 
     print(f"Количество сторон у круга: {sides_count}")
 
-    # __radius = sides / (2 * math.pi)
-    # print(f"Радиус круга: {__radius}")
+    def get_square(self):
+        square = (self.new_sides[0] ** 2) / (4 * math.pi)
+        __radius = self.new_sides[0] / (2 * math.pi) # Вне метода не удалось записать
+        print(f"Радиус круга: {__radius}")
+        print(f"Площадь круга: {square}")
+        return square
 
 class Triangle(Figure):
     sides_count = 3
     def __init__(self, txt, color, *sides):
         super().__init__(txt, color, *sides)
     print(f"Количество сторон у треугольника: {sides_count}")
+
+    def get_square(self):
+        A =  self.new_sides[0]
+        square = (A**2*math.sqrt(3))/4
+        print(f"Площадь треугольника: {square}")
+        return square
 
 class Cube(Figure):
     sides_count = 12
@@ -86,18 +99,19 @@ class Cube(Figure):
     print(f"Количество рёбер у квадрата: {sides_count}")
 
     def get_volume(self):
-        volume = self.__sides[0] ** 3
+        volume = self.new_sides[0] ** 3
         print(f"Объём куба: {volume}")
+        return volume
 
 circle1 = Circle("Круг", (200, 200, 100), 10)
-circle1.set_color(255, 66, 277)
+circle1.set_color(255, 66, 77)
 print(circle1.get_color())
 circle1.get_sides()
 circle1.set_sides(15) # Изменится
 print(circle1.get_sides())
 
-triangle1 = Triangle("Треугольник", (200, 200, 100), 10, 6)
-triangle1.set_color(11, 255, 44)
+triangle1 = Triangle("Треугольник", (50, 50, 50), 10, 6)
+triangle1.set_color(11, 255, 344)
 print(triangle1.get_color())
 triangle1.get_sides()
 triangle1.set_sides(7)
@@ -112,3 +126,6 @@ print(cube1.get_sides())
 print(len(circle1))
 print(len(triangle1))
 print(len(cube1))
+print(circle1.get_square())
+print(triangle1.get_square())
+print(cube1.get_volume())
