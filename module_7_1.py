@@ -1,5 +1,9 @@
 from pprint import pprint
-
+# Немного усложнила себе задачу. Сначала организовала запись в файл нескольких продуктов,
+# далее по заданию - считать данные из файла и через проверку добавить новые продукты через add.
+# Однако саму проверку (наличие продуктов в файле) так и не удалось выполнить.
+# В остальном всё вроде работает корректно.
+# Как правильно записать проверку?
 class Product:
 
     def __new__(cls, *args):
@@ -17,7 +21,7 @@ class Product:
 
 class Shop(Product):
     __file_name = 'products.txt'
-    gp = ''
+    # gp = ''
 
     def __init__(self, name, weight, category):
         super().__init__(name, weight, category)
@@ -39,7 +43,7 @@ class Shop(Product):
         file = open(self.__file_name, 'r+')
         pprint(file.read())
         for item in products_2:
-            if str(item) in str(pprint(file.read())):
+            if str(item) in str(pprint(file.read())): # Как тут правильно записать?
                 print(f"Продукт {str(item)} уже есть в магазине")
             else:
                 # file = open(self.__file_name, 'a+')
