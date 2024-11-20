@@ -2,7 +2,6 @@ from pprint import pprint
 # Немного усложнила себе задачу. Сначала организовала запись в файл нескольких продуктов,
 # далее по заданию - считать данные из файла и через проверку добавить новые продукты через add.
 # Однако саму проверку (наличие продуктов в файле) так и не удалось выполнить.
-# В остальном всё вроде работает корректно.
 # Как правильно записать проверку?
 class Product:
 
@@ -41,7 +40,7 @@ class Shop(Product):
 
     def add(self, *products_2):
         file = open(self.__file_name, 'r+')
-        pprint(file.read())
+        # pprint(file.read())
         for item in products_2:
             if str(item) in str(pprint(file.read())): # Как тут правильно записать?
                 print(f"Продукт {str(item)} уже есть в магазине")
@@ -63,4 +62,3 @@ print(p2) # __str__
 s1.new_products(p2, p3, p4, p5)
 s1.add(p1, p2, p3)
 print(s1.get_products())
-
