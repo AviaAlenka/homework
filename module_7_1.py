@@ -17,35 +17,46 @@ class Product:
 
 class Shop(Product):
     __file_name = 'products.txt'
+    gp = ''
 
     def __init__(self, name, weight, category):
         super().__init__(name, weight, category)
 
+    def new_products(self, *products_1):
+        file = open(self.__file_name, 'a')
+        for item in products_1:
+            file.writelines(f"{str(item)}\n")
+        file.close()
+
     def get_products(self):
         file = open(self.__file_name, 'r')
+        # gp = str(pprint(file.readlines()))
         pprint(file.read())
         file.close()
-        # return self.get_products
+        # return gp
 
-
-    def add(self, *products):
-        file = open(self.__file_name, 'a')
-        for item in products:
-            # if self is str(item) or self == str(item):
-            if item in products:
-                print(f"{str(item)} уже есть в магазине")
+    def add(self, *products_2):
+        file = open(self.__file_name, 'r+')
+        pprint(file.read())
+        for item in products_2:
+            if str(item) in str(pprint(file.read())):
+                print(f"Продукт {str(item)} уже есть в магазине")
             else:
+                # file = open(self.__file_name, 'a+')
                 file.writelines(f"{str(item)}\n")
-
         file.close()
+
         return self.get_products
 
 s1 = Shop('', 0, '')
 p1 = Product('Potato', 50.5, 'Vegetables')
 p2 = Product('Spaghetti', 3.4, 'Groceries')
 p3 = Product('Potato', 5.5, 'Vegetables')
+p4 = Product('Tomato', 8.2, 'Vegetables')
+p5 = Product('Lemon', 2.7, 'Fruits')
 
 print(p2) # __str__
+s1.new_products(p2, p3, p4, p5)
 s1.add(p1, p2, p3)
 print(s1.get_products())
 
