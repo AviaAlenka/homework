@@ -39,7 +39,7 @@ class Shop(Product):
         # return gp
 
     def add(self, *products_2):
-        file = open(self.__file_name, 'r+')
+        file = open(self.__file_name, 'r+') # В режиме "a" не даёт выполнить pprint()
         # pprint(file.read())
         for item in products_2:
             if str(item) in str(pprint(file.read())): # Как тут правильно записать?
