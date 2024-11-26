@@ -13,7 +13,7 @@ def personal_sum(numbers):
                 result += item
                 correct_data += 1
             except TypeError as exc:
-                print(f"Некорректный тип данных: {item}")
+                print(f"Некорректный тип данных для подсчёта суммы: {item}")
                 incorrect_data += 1
             continue
     except TypeError as exc:
