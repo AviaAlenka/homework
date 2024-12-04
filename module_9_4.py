@@ -1,4 +1,3 @@
-from os.path import split
 from random import choice
 
 # Лямбда-функция
