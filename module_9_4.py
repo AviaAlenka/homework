@@ -4,7 +4,7 @@ from random import choice
 # Лямбда-функция
 first = 'Мама мыла раму'
 second = 'Рамена мало было'
-res = list(map(lambda x, y: split(x) == split(y),  first, second))
+res = list(map(lambda x, y: x == y,  first, second))
 print(res)
 
 # Замыкание
@@ -24,7 +24,7 @@ class MysticBall:
     def __init__(self, *words):
         self.words = words
 
-    def __call__(self, *words):
+    def __call__(self):
         return choice(self.words)
 
 first_ball = MysticBall('Да', 'Нет', 'Наверное')
