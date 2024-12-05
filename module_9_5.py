@@ -1,3 +1,5 @@
+# Вот хоть режьте, не понимаю, как записать в результат итерации элемент start...
+
 class StepValueError(ValueError):
     pass
 
@@ -6,24 +8,22 @@ class  Iterator:
         self.start = start
         self.stop = stop
         self.step = step
-        self.pointer = start
         if self.step == 0:
             raise StepValueError('шаг не может быть равен 0')
 
     def __iter__(self):
-        self.pointer = self.start - self.step
+        self.pointer = self.start
+        # self.pointer = self.start - self.step # Да, метод подгона,
+                                                # но с такой записью всё работало корректно :-(
         return self
 
     def __next__(self):
-        self.pointer += self.step
-        if self.step > 0 and self.pointer <= self.stop:
+        if self.step > 0 and self.pointer < self.stop:
+            self.pointer += self.step
             return self.pointer
-        if self.step < 0 and self.pointer >= self.stop:
+        if self.step < 0 and self.pointer > self.stop:
+            self.pointer += self.step
             return self.pointer
-        if self.step > 0 and self.pointer <= self.start:
-            print("Итерация вне диапазона невозможна")
-        if self.step < 0 and self.pointer >= self.start:
-            print("Итерация вне диапазона невозможна")
         raise StopIteration()
 
 try:
