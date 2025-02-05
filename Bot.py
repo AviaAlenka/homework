@@ -6,7 +6,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMar
 import asyncio
 import datetime
 
-api = "8100419843:AAHoQivMyXedI3BxgqlQH2lKKnY_aiXx2SM"
+api = ""
 bot = Bot(token = api)
 dp = Dispatcher(bot, storage = MemoryStorage())
 kb = ReplyKeyboardMarkup(resize_keyboard=True, input_field_placeholder =
